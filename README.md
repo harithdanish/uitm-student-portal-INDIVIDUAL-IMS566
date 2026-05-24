@@ -1,58 +1,181 @@
-# CakePHP Application Skeleton
+# UiTM Student Portal
 
-![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=5.x)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+A responsive web-based student management system developed for the IMS566 Advanced Web Design Development and Content Management individual project. This system allows students to log in, manage assignments, monitor attendance performance, and view subject-related information through a modern dashboard interface.
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 5.x.
+---
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+# 📌 Project Description
 
-## Installation
+UiTM Student Portal is a web application developed using CakePHP and Bootstrap 5. The system focuses on student academic management by providing authentication features, dashboard visualisation, assignment management, attendance tracking, and responsive navigation.
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+The project fulfills the IMS566 project requirements including authentication, dashboard page, navigation menu, data view pages, and meaningful data visualisation.
 
-If Composer is installed globally, run
+---
+
+# ✨ Features Included
+
+## 🔐 Authentication System
+- Student Login
+- Student Registration
+- Session-based authentication
+- Invalid login error handling
+- Protected pages (users cannot access system pages without logging in)
+
+---
+
+## 🏠 Home Page
+- Landing page for visitors
+- Login & Register navigation
+- Responsive design
+
+---
+
+## 📊 Dashboard
+Displays assignment statistics:
+- Total Assignments
+- Submitted Assignments
+- Pending Assignments
+
+Features:
+- Summary cards
+- Visual dashboard interface
+- Responsive layout
+
+---
+
+## 👨‍🎓 Student Management
+- View student list
+- Edit student information
+- Delete student records
+- Responsive table design
+
+---
+
+## 📚 Subject Management
+- View subject list
+- Assignment allocation by subject
+- Organised academic structure
+
+---
+
+## 📝 Assignment Management
+- Create assignments
+- Assign tasks to multiple students
+- Update submission status
+- Delete assignments
+- Clear all assignments
+- Dynamic assignment table
+
+---
+
+## 📈 Attendance Monitoring
+
+Attendance is calculated automatically based on assignment submission status.
+
+### Attendance Categories
+- Excellent
+- Good
+- Average
+- Poor
+
+### Attendance Features
+- Progress bar visualisation
+- Attendance percentage
+- Student performance status
+
+---
+
+## 🌙 Additional Features
+- Dark Mode Toggle
+- Responsive Navigation Bar
+- Footer with project information
+- Mobile-friendly design
+- Bootstrap UI components
+
+---
+
+# 🛠️ Frameworks / Libraries Used
+
+| Technology | Usage |
+|---|---|
+| CakePHP | PHP MVC Framework |
+| Bootstrap 5 | Responsive Front-end Framework |
+| PHP | Backend Development |
+| MySQL / phpMyAdmin | Database Management |
+| Font Awesome | Icons |
+| HTML5 | Structure |
+| CSS3 | Styling |
+| JavaScript | Interactivity |
+
+---
+
+# 💻 Software Used
+- Laragon
+- Visual Studio Code
+- Google Chrome
+- phpMyAdmin
+- GitHub
+
+---
+
+# ⚙️ Installation Guide
+
+## Step 1 — Download Project Files
+Download the project files from the GitHub repository.
+
+> Do not place the SQL file inside the project folder.
+
+---
+
+## Step 2 — Place Project Folder
+Extract the downloaded project folder and place it inside:
 
 ```bash
-composer create-project --prefer-dist cakephp/app
+laragon/www
 ```
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+Example:
 
 ```bash
-composer create-project --prefer-dist cakephp/app myapp
+C:/laragon/www/student_db
 ```
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+---
+
+## Step 3 — Import Database
+1. Open **phpMyAdmin**
+2. Create a new database named:
 
 ```bash
-bin/cake server -p 8765
+student_db
 ```
 
-Then visit `http://localhost:8765` to see the welcome page.
+3. Click the database
+4. Go to the **Import** tab
+5. Import the provided SQL file
 
-## Demo app
+---
 
-Check out the [5.x-demo branch](https://github.com/cakephp/app/tree/5.x-demo), which contains demo migrations and a seeder.
-See the [README](https://github.com/cakephp/app/blob/5.x-demo/README.md) on how to get it running.
+## Step 4 — Run the Website
+Open browser and run:
 
-## Update
+```bash
+http://localhost/student_db
+```
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+---
 
-## Configuration
+# 🔑 Instructions to Test Login
 
-Read and edit the environment specific `config/app_local.php` and set up the
-`'Datasources'` and any other configuration relevant for your application.
-Other environment agnostic settings can be changed in `config/app.php`.
+## Default Login Example
 
-## Layout
+| Field | Example |
+|---|---|
+| Student ID | 2025235396 |
+| Password | 123 |
 
-The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+You may also register a new student account using the Register page.
+
+---
+GitHub Repository
+https://github.com/harithdanish/uitm-student-portal-INDIVIDUAL-IMS566.git
