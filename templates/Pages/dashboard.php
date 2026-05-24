@@ -1,5 +1,6 @@
 <div class="container-fluid">
-    <h2 class="mb-4 font-weight-bold">Dashboard Overview</h2>
+    <h2 class="mb-2 font-weight-bold">Dashboard Overview</h2>
+    <p class="text-muted mb-4">Welcome, <?= h($studentSession['full_name'] ?? 'Student') ?>.</p>
     
     <div class="row">
         <div class="col-md-4 mb-4">

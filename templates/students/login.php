@@ -8,24 +8,40 @@
             <div class="card-body p-4">
                 <h3 class="text-center mb-4">Welcome</h3>
                 
-                <?= $this->Form->create() ?>
+                
+
+                <?= $this->Form->create(null, ['url' => ['controller' => 'Students', 'action' => 'login']]) ?>
                     <div class="mb-3">
-                        <label class="form-label">Student ID</label>
-                        <input type="text" class="form-control" placeholder="Enter Student ID" required>
+                        <label class="form-label">Student ID / Email</label>
+                        <?= $this->Form->control('student_number', [
+                            'label' => false,
+                            'class' => 'form-control',
+                            'placeholder' => 'Enter Student ID or Email',
+                            'required' => true
+                        ]) ?>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control" placeholder="Enter Password" required>
+                        <?= $this->Form->control('password', [
+                            'type' => 'password',
+                            'label' => false,
+                            'class' => 'form-control',
+                            'placeholder' => 'Enter Password',
+                            'required' => true
+                        ]) ?>
                     </div>
                     <div class="d-grid mb-3">
-                        <?= $this->Html->link('Login', ['controller' => 'Pages', 'action' => 'dashboard'], ['class' => 'btn btn-primary']) ?>
+                        <button type="submit" class="btn btn-primary">Login</button>
                     </div>
                 <?= $this->Form->end() ?>
                 
                 <div class="text-center">
-                    <a href="#" style="text-decoration: none;">Forgot Password?</a> | 
-                    <a href="#" style="text-decoration: none;">Sign Up</a>
-                </div>
+    <?= $this->Html->link(
+        'Sign Up',
+        ['controller' => 'Students', 'action' => 'register'],
+        ['style' => 'text-decoration: none;']
+    ) ?>
+</div>
             </div>
         </div>
 

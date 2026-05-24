@@ -18,8 +18,15 @@ class PagesController extends AppController
         $this->render(implode('/', $path));
     }
 
+    public function home()
+    {
+        // Homepage / index page
+    }
+
     public function dashboard()
     {
+        $studentSession = $this->request->getSession()->read('Student');
+
         $Assignments = TableRegistry::getTableLocator()->get('Assignments');
 
         $totalAssignments = $Assignments->find()->count();
@@ -35,7 +42,8 @@ class PagesController extends AppController
         $this->set(compact(
             'totalAssignments',
             'submittedAssignments',
-            'pendingAssignments'
+            'pendingAssignments',
+            'studentSession'
         ));
     }
 }

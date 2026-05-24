@@ -3,40 +3,59 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\ORM\TableRegistry;
-
 class AttendanceController extends AppController
 {
     public function index()
-{
-    $Students = TableRegistry::getTableLocator()->get('Students');
-    $Assignments = TableRegistry::getTableLocator()->get('Assignments');
+    {
+        $Students = $this->fetchTable('Students');
+        $Assignments = $this->fetchTable('Assignments');
 
-    // Ambil semua pelajar supaya yang belum ada rekod pun muncul
-    $studentsList = $Students->find()->all();
-    $attendance = [];
+        $students = $Students->find()
+            ->order(['full_name' => 'ASC'])
+            ->all();
 
-    foreach ($studentsList as $student) {
-        // Kira jumlah tugasan untuk pelajar ini
-        $total = $Assignments->find()->where(['student_id' => $student->student_id])->count();
-        
-        // Kira tugasan yang sudah 'Submitted'
-        $submitted = $Assignments->find()->where([
-            'student_id' => $student->student_id,
-            'submission_status' => 'Submitted'
-        ])->count();
+        $attendance = [];
 
-        // Kira peratusan
-        $percentage = ($total > 0) ? round(($submitted / $total) * 100) : 0;
+        foreach ($students as $student) {
 
-        // Simpan dalam array untuk dipaparkan
-        $attendance[] = [
-            'name' => $student->full_name,
-            'student_number' => $student->student_number,
-            'percentage' => $percentage
-        ];
+            $totalAssignments = $Assignments->find()
+                ->where(['student_id' => $student->student_id])
+                ->count();
+
+            $submittedAssignments = $Assignments->find()
+                ->where([
+                    'student_id' => $student->student_id,
+                    'submission_status' => 'Submitted'
+                ])
+                ->count();
+
+            $percentage = 0;
+
+            if ($totalAssignments > 0) {
+                $percentage = round(($submittedAssignments / $totalAssignments) * 100);
+            }
+
+            if ($percentage >= 80) {
+                $status = 'Excellent';
+            } elseif ($percentage >= 60) {
+                $status = 'Good';
+            } elseif ($percentage >= 40) {
+                $status = 'Average';
+            } else {
+                $status = 'Poor';
+            }
+
+            $attendance[] = [
+                'student_id' => $student->student_id,
+                'name' => $student->full_name,
+                'student_number' => $student->student_number,
+                'submitted_assignments' => $submittedAssignments,
+                'total_assignments' => $totalAssignments,
+                'percentage' => $percentage,
+                'status' => $status
+            ];
+        }
+
+        $this->set(compact('attendance'));
     }
-
-    $this->set(compact('attendance'));
-}
 }
